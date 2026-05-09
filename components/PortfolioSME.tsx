@@ -112,16 +112,16 @@ const P1_STACK = [
 
 const P1_TESTIMONIALS = [
   {
-    quote: 'Amari is the engineer you bring in when you need someone who can switch effortlessly between backend microservices, security compliance, and user feedback analysis. Highly practical, down-to-earth delivery style.',
-    initials: 'MD',
-    name: 'Ministry of Defence Product Owner',
-    role: 'Principal Delivery Manager · UK Defence Tech',
+    quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin interdum, arcu ut scelerisque feugiat, ante leo varius massa, ac hendrerit nisl lectus at nunc. Duis tempus nisl id nunc pretium porta.',
+    initials: 'JD',
+    name: 'John Doe',
+    role: 'SME Client · Tech Founder',
   },
   {
-    quote: 'He was instrumental in delivering our national infrastructure security assessments using the NIST framework. He translates complex requirements into straightforward guidelines that launch seamlessly into BAU.',
-    initials: 'PA',
-    name: 'PA Consulting Lead',
-    role: 'Managing Consultant · Public Sector Advisory',
+    quote: 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam sit amet leo vel massa dictum facilisis. In hac habitasse platea dictumst.',
+    initials: 'AS',
+    name: 'Alice Smith',
+    role: 'Engineering Manager · Digital Agency',
   },
 ];
 

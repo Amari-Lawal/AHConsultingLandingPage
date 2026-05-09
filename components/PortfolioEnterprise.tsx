@@ -203,16 +203,16 @@ const TRUST_SIGNALS = [
 
 const TESTIMONIALS = [
   {
-    quote: 'Amari is the consultant you bring in when client impact and absolute correctness cannot be compromised. Whether conducting infrastructure-wide cybersecurity assessments for transport networks or debugging production environments, his focus is entirely on delivering operational success.',
-    initials: 'PA',
-    name: 'PA Consulting Engagement Lead',
-    role: 'Managing Consultant · Public Sector Advisory',
+    quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum pretium nunc, in facilisis arcu eleifend sed. Aliquam nec arcu id justo interdum vehicula. Ut a dolor mi.',
+    initials: 'EP',
+    name: 'Enterprise Partner',
+    role: 'Executive Sponsor · Corporate Systems',
   },
   {
-    quote: 'His ability to move seamlessly between heavy backend Java engineering, C# support, and sophisticated quantitative User Research is highly rare. He provided the exact user insights we needed to unlock and greenlight the next quarter of our roadmap.',
-    initials: 'MD',
-    name: 'Ministry of Defence Product Owner',
-    role: 'Principal Delivery Manager · UK Defence Tech',
+    quote: 'Integer congue neque sit amet ex porta, id sollicitudin elit facilisis. Sed id tortor vitae eros interdum interdum. Duis eleifend pretium nunc eu elementum.',
+    initials: 'PM',
+    name: 'Program Manager',
+    role: 'Lead Delivery Director · Public Sector Advisory',
   },
 ];
 
