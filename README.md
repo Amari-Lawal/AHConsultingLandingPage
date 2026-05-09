@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AH Consulting — Professional Landing Page & Dynamic Portfolios
 
-## Getting Started
+A highly polished, premium, and dual-tier Next.js portfolio website representing **AH Consulting** (**Amari Lawal**). Engineered for state-of-the-art aesthetics, responsiveness, and maximum conversion rates from prospective clients (SMEs, startups, high-end corporations, and government agencies).
 
-First, run the development server:
+---
+
+## 🚀 Key Features
+
+*   **Dual-Tier Persona Architecture**:
+    *   **SME & Growth Segment (`sme`)**: A premium dark-themed portfolio crafted to appeal to startups, digital agencies, funded tech founders, and rapid LinkedIn/Upwork clients.
+    *   **Enterprise & High-End Advisory (`enterprise`)**: A premium, clean light-themed consultant portfolio structured for corporate C-suite executives, public sector stakeholders, and critical national infrastructure (CNI) clients.
+*   **Dynamic Layout Toggling**: Allows prospective clients to switch fluidly between the SME developer presentation and the advisory consultant layout in real-time via a floating glassmorphic widget.
+*   **Automated Quarter Calculation**: Avaialability timelines (e.g. `Q3 2025`, `Q2 2026`) are computed dynamically on load, ensuring the portfolio never looks stale or outdated.
+*   **100% Type Safe & Warning-Free**: Fully modularized and written using strict TypeScript components.
+
+---
+
+## 🔑 Environment Variables Configuration
+
+This project reads environment variables at build-time and runtime. Create a `.env.local` file in the root of your project to declare configuration defaults:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Path: /.env.local
+
+# Declares the default active portfolio layout segment loaded on initial page mount.
+# Allowed Values: 
+#   - "sme" (Loads the SME & Growth dark-themed developer portfolio)
+#   - "enterprise" (Loads the Enterprise & Advisory light-themed corporate consultant portfolio)
+NEXT_PUBLIC_ACTIVE_PORTFOLIO=enterprise
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> [!NOTE]  
+> In Next.js, environment variables accessed within client components must be prefixed with `NEXT_PUBLIC_`. Next.js automatically inline-binds these values into the client-side JavaScript bundle during the build phase.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Getting Started
 
-## Learn More
+### 1. Installation
+Install project dependencies:
+```bash
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Set Up Environment Variables
+Create a local environment file and define your preferred active persona:
+```bash
+echo "NEXT_PUBLIC_ACTIVE_PORTFOLIO=enterprise" > .env.local
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Run Development Server
+Start the local server with hot-reloading:
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Build for Production
+Generate a highly optimized, static, and type-checked production bundle:
+```bash
+npm run build
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📂 Codebase Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+├── app/
+│   ├── layout.tsx         # Global fonts, metadata, and HTML wrapper
+│   └── page.tsx           # Page controller (environment flag reader & layout switcher)
+├── components/
+│   ├── PortfolioSME.tsx        # SME & Growth Layout component (Dark Theme)
+│   └── PortfolioEnterprise.tsx # Enterprise & Advisory Layout component (Light Theme)
+├── public/                # Static assets (images, favicon, etc.)
+├── .env.local             # Local environment flags (ignored by git)
+└── README.md              # Project documentation
+```
+
+---
+
+## 📈 Technical Details
+
+*   **Framework**: Next.js 15 (using App Router and Turbopack compiler)
+*   **Styling**: Vanilla CSS alongside native Tailwind-styled variables
+*   **Type System**: Strict TypeScript configuration (compiles warning-free)
+*   **State Management**: Light-weight, responsive React hooks for client-side layout toggles
