@@ -93,7 +93,7 @@ const ENGAGEMENTS = [
   },
   {
     category: 'Cybersecurity',
-    title: 'National Infrastructure Maturity Assessment — National Highways (via PA Consulting)',
+    title: 'National Infrastructure Maturity Assessment — National Highways',
     description: 'Conducted high-priority cybersecurity maturity assessments across critical national transport infrastructure. Applied the NIST Cybersecurity Framework to audit multiple core operational services, successfully completing 100% of the target scope. Developed strategic assessment deliverables that were seamlessly integrated into Business As Usual (BAU), establishing a permanent post-assessment review cycle for continuous security improvement.',
     tags: ['NIST Framework', 'PA Consulting', 'Cybersecurity Audit', 'BAU Integration', 'CNI Protection'],
     stats: [
