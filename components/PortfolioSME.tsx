@@ -14,10 +14,10 @@ const P1_NAV_LINKS = [
 ];
 
 const P1_STATS = [
-  { value: '20', suffix: '+', label: 'Repos mastered' },
-  { value: '100', suffix: '%', label: 'NIST scope assessed' },
-  { value: '0', suffix: '', label: 'Live incidents' },
-  { value: 'Active', suffix: '', label: 'BAU integrations' },
+  { value: '5/5', suffix: '', label: 'Services Assessed', description: 'Complete NIST cybersecurity maturity coverage for CNI transport networks' },
+  { value: '20+', suffix: '', label: 'Repositories Mastered', description: 'Seamless features delivered within massive Home Office caseworking systems' },
+  { value: 'Next-Q', suffix: '', label: 'Roadmap Alignment', description: 'Evidence-based user trials directly unlocking Ministry of Defence features' },
+  { value: 'Active', suffix: '', label: 'BAU Integration', description: 'Assessed security recommendations successfully launched into live operations' },
 ];
 
 const P1_STATUS_ITEMS = [
@@ -234,11 +234,15 @@ export default function PortfolioSME({
         <div className="max-w-[900px] mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-4">
           {P1_STATS.map((stat, idx) => (
             <div key={idx} className="p-4 border-r border-white/10 last:border-r-0 max-sm:border-r-0 max-sm:border-b max-sm:last:border-b-0 border-white/10">
-              <div className="font-serif text-3xl text-white leading-none mb-1">
-                {stat.value}<span className="text-[#E76500] ml-0.5">{stat.suffix}</span>
+              <div className="font-serif text-3xl text-white leading-none mb-1.5">
+                {stat.value}
+                {stat.suffix && <span className="text-[#E76500] ml-0.5">{stat.suffix}</span>}
               </div>
-              <div className="text-[12px] text-white/45 tracking-wider font-light">
+              <div className="text-[12px] text-[#FF8C42] tracking-wider font-medium uppercase mb-1">
                 {stat.label}
+              </div>
+              <div className="text-[11px] text-white/35 leading-relaxed font-light">
+                {stat.description}
               </div>
             </div>
           ))}
