@@ -106,7 +106,7 @@ const P1_STACK = [
   },
   {
     group: 'Web & Research',
-    items: ['C# / ASP.NET Core', 'Python / Django / Flask', 'User Trial Design', 'Likert Scaling', 'Actionable Insights', 'Data Analysis'],
+    items: ['C# / ASP.NET Core', 'Python /FastAPI /Django / Flask', 'User Trial Design', 'Likert Scaling', 'Actionable Insights', 'Data Analysis'],
   },
 ];
 
