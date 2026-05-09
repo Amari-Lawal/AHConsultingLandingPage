@@ -64,7 +64,7 @@ const P1_PROJECTS = [
     description: 'Contributed feature updates and backend logic across a massive 20-repository public sector caseworking app. Ensured strict performance and uptime across distributed codebases.',
     tags: ['Java', 'Spring Boot', 'Microservices', 'API Design', 'Multi-Repo'],
     metric: '20+',
-    metricLabel: 'Repositories managed',
+    metricLabel: 'Distributed microservices',
   },
   {
     tag: 'Cybersecurity',
@@ -73,7 +73,7 @@ const P1_PROJECTS = [
     description: 'Conducted priority cybersecurity audits across national transport infrastructure using the NIST Framework. Delivered clean, practical recommendations built to launch directly into active operations.',
     tags: ['NIST Framework', 'PA Consulting', 'Security Maturity', 'CNI Protection'],
     metric: '100%',
-    metricLabel: 'Assessed audit scope',
+    metricLabel: 'NIST security alignment',
   },
   {
     tag: 'APM & Backend',
@@ -81,8 +81,8 @@ const P1_PROJECTS = [
     title: 'Production support & scanning integration (Rentokil Initial)',
     description: 'Shipped robust backend features while automating static security testing using Checkmarx. Leveraged advanced Datadog APM tracing to rapidly isolate and debug production user issues.',
     tags: ['Java', 'Checkmarx SAST', 'Datadog APM', 'Live Tracing'],
-    metric: '0',
-    metricLabel: 'Live incident downtime',
+    metric: 'Zero',
+    metricLabel: 'Critical security escapes',
   },
   {
     tag: 'User Research',
@@ -90,8 +90,8 @@ const P1_PROJECTS = [
     title: 'User sentiment trials & analytics (Ministry of Defence)',
     description: 'Ran user trials and stakeholder interviews. Leveraged qualitative feedback and quantitative Likert scaling to compile report deliverables that greenlit high-priority features.',
     tags: ['User Research', 'Likert Scales', 'Data Analysis', 'Roadmap Alignment'],
-    metric: 'Active',
-    metricLabel: 'Quarterly features cleared',
+    metric: 'Next-Q',
+    metricLabel: 'Roadmap features validated',
   },
 ];
 
@@ -138,7 +138,7 @@ export default function PortfolioSME({
 }: PortfolioSMEProps) {
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-[#F0F0F0] font-sans selection:bg-[#E76500]/30 selection:text-white transition-colors duration-300">
-      
+
       {/* ── NAV ── */}
       <nav className="bg-[#0A0A0A]/92 backdrop-blur-md border-b border-white/10 px-6 md:px-12 sticky top-0 z-50 h-[56px] flex items-center justify-between">
         <div className="font-mono text-[13px] text-[#FF8C42] tracking-wider select-none flex items-center gap-2">
@@ -147,17 +147,17 @@ export default function PortfolioSME({
         </div>
         <div className="hidden md:flex items-center gap-8">
           {P1_NAV_LINKS.map(link => (
-            <a 
-              key={link.href} 
-              href={link.href} 
+            <a
+              key={link.href}
+              href={link.href}
               className="text-[13px] text-white/45 hover:text-white transition-colors tracking-wide"
             >
               {link.label}
             </a>
           ))}
         </div>
-        <a 
-          href="#contact" 
+        <a
+          href="#contact"
           className="text-[13px] font-medium text-[#E76500] hover:bg-[#E76500] hover:text-white border border-[#E76500] px-4 py-1.5 rounded transition-all duration-150"
         >
           Hire me
@@ -178,14 +178,14 @@ export default function PortfolioSME({
               I build robust backend systems, audit security maturity using the NIST framework, and design strategic features using evidence-led user research. Let&apos;s deliver business impact together.
             </p>
             <div className="flex flex-wrap gap-4 items-center">
-              <a 
-                href="#projects" 
+              <a
+                href="#projects"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-[#E76500] hover:bg-[#FF8C42] text-white text-[14px] font-medium rounded transition-all duration-150 shadow-md"
               >
                 View my work
               </a>
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-transparent hover:border-white/30 text-white text-[14px] font-normal rounded border border-white/10 transition-all duration-150"
               >
                 Let&apos;s talk
@@ -209,15 +209,13 @@ export default function PortfolioSME({
                 return (
                   <div
                     key={item.label}
-                    className={`flex justify-between items-baseline py-2 ${
-                      isLast ? '' : 'border-b border-white/5'
-                    }`}
+                    className={`flex justify-between items-baseline py-2 ${isLast ? '' : 'border-b border-white/5'
+                      }`}
                   >
                     <span className="text-[12px] text-white/45">{item.label}</span>
                     <span
-                      className={`font-mono text-[13px] font-medium ${
-                        item.isGreen ? 'text-[#3FB950]' : 'text-white'
-                      }`}
+                      className={`font-mono text-[13px] font-medium ${item.isGreen ? 'text-[#3FB950]' : 'text-white'
+                        }`}
                     >
                       {item.value}
                     </span>
@@ -270,11 +268,10 @@ export default function PortfolioSME({
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {exp.tags.map((tag, tagIdx) => (
-                  <span 
-                    key={tagIdx} 
-                    className={`font-mono text-[10px] px-2 py-0.5 rounded-sm border ${
-                      exp.isAccent 
-                        ? 'bg-[#E76500]/10 text-[#FF8C42] border-[#E76500]/25' 
+                  <span
+                    key={tagIdx}
+                    className={`font-mono text-[10px] px-2 py-0.5 rounded-sm border ${exp.isAccent
+                        ? 'bg-[#E76500]/10 text-[#FF8C42] border-[#E76500]/25'
                         : 'bg-white/5 text-white/50 border-white/10'
                       }`}
                   >
@@ -396,16 +393,16 @@ export default function PortfolioSME({
           Available for backend engineering contracts, security audits, and fractional feature advisory. Response within 24 hours.
         </p>
         <div className="flex flex-wrap gap-4 items-center justify-center">
-          <a 
-            href="mailto:amari.lawal05@gmail.com" 
+          <a
+            href="mailto:amari.lawal05@gmail.com"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#E76500] hover:bg-[#FF8C42] text-white text-[14px] font-medium rounded transition-all duration-150 shadow-md"
           >
             amari.lawal05@gmail.com
           </a>
-          <a 
-            href="https://linkedin.com" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-transparent hover:border-white/30 text-white text-[14px] font-normal rounded border border-white/10 transition-all duration-150"
           >
             LinkedIn
@@ -426,21 +423,19 @@ export default function PortfolioSME({
         <div className="flex gap-1 bg-white/5 p-0.5 rounded-full border border-white/10">
           <button
             onClick={() => onToggleLayout(false)}
-            className={`text-[11px] font-mono font-medium px-3 py-1 rounded-full transition-all duration-200 ${
-              !isEnterprise
+            className={`text-[11px] font-mono font-medium px-3 py-1 rounded-full transition-all duration-200 ${!isEnterprise
                 ? 'bg-[#E76500] text-white shadow-sm'
                 : 'text-white/40 hover:text-white/70'
-            }`}
+              }`}
           >
             SME &amp; Growth
           </button>
           <button
             onClick={() => onToggleLayout(true)}
-            className={`text-[11px] font-mono font-medium px-3 py-1 rounded-full transition-all duration-200 ${
-              isEnterprise
+            className={`text-[11px] font-mono font-medium px-3 py-1 rounded-full transition-all duration-200 ${isEnterprise
                 ? 'bg-zinc-800 text-white shadow-sm'
                 : 'text-white/40 hover:text-white/70'
-            }`}
+              }`}
           >
             Enterprise / Consultant
           </button>
