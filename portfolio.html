@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Alex Morgan — Java Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --java-orange: #E76500;
+    --java-dark: #0A0A0A;
+    --java-mid: #1A1A1A;
+    --java-surface: #141414;
+    --java-border: rgba(255,255,255,0.08);
+    --java-muted: rgba(255,255,255,0.45);
+    --java-accent: #FF8C42;
+    --java-green: #3FB950;
+    --java-blue: #58A6FF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--java-dark);
+    color: #F0F0F0;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--java-border);
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--java-accent);
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--java-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border: 1px solid var(--java-orange);
+    border-radius: 4px;
+    color: var(--java-orange);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--java-orange); color: #fff; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    padding: 7rem 2rem 6rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--java-accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--java-accent);
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--java-accent);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--java-muted);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--java-orange);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #FF8C42; transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: transparent;
+    color: #F0F0F0;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    border: 1px solid var(--java-border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
+
+  .code-snippet {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--java-green);
+    background: rgba(63,185,80,0.08);
+    border: 1px solid rgba(63,185,80,0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-top: 2.5rem;
+  }
+  .code-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--java-green); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--java-surface);
+    border-top: 1px solid var(--java-border);
+    border-bottom: 1px solid var(--java-border);
+  }
+  .stats-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat {
+    padding: 1rem 1.5rem;
+    border-right: 1px solid var(--java-border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-num span { color: var(--java-orange); }
+  .stat-label {
+    font-size: 12px;
+    color: var(--java-muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* SECTIONS */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    border-bottom: 1px solid var(--java-border);
+  }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--java-orange);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 2.5rem;
+    line-height: 1.2;
+  }
+
+  /* EXPERTISE GRID */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--java-border);
+    border: 1px solid var(--java-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .expertise-card {
+    background: var(--java-surface);
+    padding: 1.75rem;
+    transition: background 0.2s;
+  }
+  .expertise-card:hover { background: #1E1E1E; }
+  .expertise-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    background: rgba(231,101,0,0.12);
+    border: 1px solid rgba(231,101,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 16px;
+    color: var(--java-orange);
+  }
+  .expertise-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .expertise-card p {
+    font-size: 13px;
+    color: var(--java-muted);
+    line-height: 1.6;
+  }
+  .tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 1rem;
+  }
+  .pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.5);
+    border: 1px solid var(--java-border);
+    letter-spacing: 0.03em;
+  }
+  .pill.accent {
+    background: rgba(231,101,0,0.1);
+    color: var(--java-accent);
+    border-color: rgba(231,101,0,0.2);
+  }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 1px; background: var(--java-border); border: 1px solid var(--java-border); border-radius: 8px; overflow: hidden; }
+  .project-item {
+    background: var(--java-surface);
+    padding: 1.75rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+    transition: background 0.2s;
+  }
+  .project-item:hover { background: #1E1E1E; }
+  .project-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-bottom: 0.6rem;
+    display: inline-block;
+  }
+  .tag-arch { background: rgba(88,166,255,0.1); color: var(--java-blue); border: 1px solid rgba(88,166,255,0.2); }
+  .tag-java { background: rgba(231,101,0,0.1); color: var(--java-accent); border: 1px solid rgba(231,101,0,0.2); }
+  .tag-design { background: rgba(63,185,80,0.1); color: var(--java-green); border: 1px solid rgba(63,185,80,0.2); }
+  .project-item h3 { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 0.4rem; }
+  .project-item p { font-size: 13px; color: var(--java-muted); line-height: 1.6; }
+  .project-meta { text-align: right; flex-shrink: 0; }
+  .project-metric {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: #fff;
+    line-height: 1;
+  }
+  .project-metric-label { font-size: 11px; color: var(--java-muted); margin-top: 2px; }
+
+  /* STACK */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .stack-group h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--java-orange);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .stack-items { display: flex; flex-direction: column; gap: 6px; }
+  .stack-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+  }
+  .stack-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--java-orange);
+    flex-shrink: 0;
+  }
+
+  /* TESTIMONIALS */
+  .testimonial-block {
+    background: var(--java-surface);
+    border: 1px solid var(--java-border);
+    border-left: 3px solid var(--java-orange);
+    border-radius: 4px;
+    padding: 2rem;
+    margin-bottom: 1rem;
+  }
+  .testimonial-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 1.25rem;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+  .author-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(231,101,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--java-accent);
+    flex-shrink: 0;
+  }
+  .author-name { font-size: 13px; font-weight: 600; color: #fff; }
+  .author-title { font-size: 12px; color: var(--java-muted); }
+
+  /* CTA */
+  .cta-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2rem 6rem;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .cta-section p {
+    font-size: 1rem;
+    color: var(--java-muted);
+    max-width: 420px;
+    margin: 0 auto 2rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--java-surface);
+    border-top: 1px solid var(--java-border);
+    padding: 2rem;
+    text-align: center;
+  }
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--java-muted);
+  }
+  footer span { color: var(--java-orange); }
+
+  @media (max-width: 600px) {
+    .stats-inner { grid-template-columns: repeat(2,1fr); }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .stack-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .project-item { grid-template-columns: 1fr; }
+    .project-meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">// AlexMorgan.dev</div>
+  <div class="nav-links">
+    <a href="#expertise">Expertise</a>
+    <a href="#projects">Projects</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Hire me</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Available for freelance &amp; consulting</div>
+  <h1>Senior Java Architect &amp; <em>System Design</em> Consultant</h1>
+  <p class="hero-desc">I design and build scalable distributed systems, lead solution architecture decisions, and modernise legacy Java platforms. 10+ years shipping production-grade software.</p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      View my work
+    </a>
+    <a href="#contact" class="btn-secondary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Let's talk
+    </a>
+  </div>
+  <div class="code-snippet">
+    <span class="code-dot"></span>
+    <span>@Available — open to new contracts from Q3 2025</span>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">10<span>+</span></div>
+      <div class="stat-label">Years in Java</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">40<span>+</span></div>
+      <div class="stat-label">Systems designed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15<span>+</span></div>
+      <div class="stat-label">Enterprise clients</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">99<span>%</span></div>
+      <div class="stat-label">Uptime delivered</div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="expertise">
+  <div class="section-label">What I do</div>
+  <h2 class="section-title">Areas of expertise</h2>
+  <div class="expertise-grid">
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>Java Backend Engineering</h3>
+      <p>Deep expertise in Java 17+, Spring Boot 3, reactive programming, and microservices. I build robust, testable, performant backend systems.</p>
+      <div class="tech-pills">
+        <span class="pill accent">Java 21</span>
+        <span class="pill accent">Spring Boot</span>
+        <span class="pill">Hibernate</span>
+        <span class="pill">Maven/Gradle</span>
+        <span class="pill">JUnit 5</span>
+      </div>
+    </div>
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      </div>
+      <h3>System Design &amp; Architecture</h3>
+      <p>Designing distributed systems at scale — event-driven architectures, CQRS, domain-driven design, and data modelling for millions of users.</p>
+      <div class="tech-pills">
+        <span class="pill accent">Microservices</span>
+        <span class="pill accent">Event-Driven</span>
+        <span class="pill">CQRS</span>
+        <span class="pill">DDD</span>
+        <span class="pill">Kafka</span>
+      </div>
+    </div>
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      </div>
+      <h3>Solution Architecture</h3>
+      <p>Translating business requirements into technical blueprints. From RFPs and architecture decision records to vendor evaluation and delivery oversight.</p>
+      <div class="tech-pills">
+        <span class="pill accent">ADRs</span>
+        <span class="pill accent">Cloud-native</span>
+        <span class="pill">AWS / GCP</span>
+        <span class="pill">Terraform</span>
+      </div>
+    </div>
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Freelance Consulting</h3>
+      <p>Embedded architecture reviews, fractional CTO engagements, legacy modernisation, team mentoring and technical due diligence for investors.</p>
+      <div class="tech-pills">
+        <span class="pill accent">Tech Reviews</span>
+        <span class="pill accent">Fractional CTO</span>
+        <span class="pill">Due Diligence</span>
+        <span class="pill">Mentoring</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="section-label">Selected work</div>
+  <h2 class="section-title">Recent projects</h2>
+  <div class="projects-list">
+    <div class="project-item">
+      <div>
+        <span class="project-tag tag-arch">Architecture</span>
+        <h3>Fintech Payment Platform — Microservices Rewrite</h3>
+        <p>Led end-to-end architecture of a monolith-to-microservices migration for a London-based fintech. Designed event-driven order processing using Kafka and Spring Boot 3, achieving sub-100ms p99 latency at 50k TPS.</p>
+        <div class="tech-pills" style="margin-top:0.75rem;">
+          <span class="pill">Java 21</span><span class="pill">Kafka</span><span class="pill">PostgreSQL</span><span class="pill">Kubernetes</span><span class="pill">AWS</span>
+        </div>
+      </div>
+      <div class="project-meta">
+        <div class="project-metric">50k</div>
+        <div class="project-metric-label">TPS throughput</div>
+      </div>
+    </div>
+    <div class="project-item">
+      <div>
+        <span class="project-tag tag-java">Java</span>
+        <h3>Healthcare Data Platform — HL7 Integration Engine</h3>
+        <p>Designed and built a FHIR-compliant HL7 message integration engine in Java 17. Processed 200M+ clinical events per day across NHS trust boundaries with full audit trail and encryption at rest.</p>
+        <div class="tech-pills" style="margin-top:0.75rem;">
+          <span class="pill">Java 17</span><span class="pill">HAPI FHIR</span><span class="pill">Spring Integration</span><span class="pill">Oracle DB</span>
+        </div>
+      </div>
+      <div class="project-meta">
+        <div class="project-metric">200M</div>
+        <div class="project-metric-label">Events / day</div>
+      </div>
+    </div>
+    <div class="project-item">
+      <div>
+        <span class="project-tag tag-design">Solution Design</span>
+        <h3>Retail E-commerce — Cloud Migration &amp; Architecture Review</h3>
+        <p>Performed architecture review and cloud migration strategy for a £50M revenue retailer. Reduced infrastructure cost by 38% and improved deployment frequency from monthly to daily CI/CD releases.</p>
+        <div class="tech-pills" style="margin-top:0.75rem;">
+          <span class="pill">GCP</span><span class="pill">Docker</span><span class="pill">Jenkins</span><span class="pill">Spring Cloud</span>
+        </div>
+      </div>
+      <div class="project-meta">
+        <div class="project-metric">38%</div>
+        <div class="project-metric-label">Cost reduction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stack">
+  <div class="section-label">Technology</div>
+  <h2 class="section-title">My stack</h2>
+  <div class="stack-grid">
+    <div class="stack-group">
+      <h4>Core Java</h4>
+      <div class="stack-items">
+        <div class="stack-item"><span class="stack-dot"></span>Java 21 / 17 / 11</div>
+        <div class="stack-item"><span class="stack-dot"></span>Spring Boot 3</div>
+        <div class="stack-item"><span class="stack-dot"></span>Spring Security</div>
+        <div class="stack-item"><span class="stack-dot"></span>Hibernate / JPA</div>
+        <div class="stack-item"><span class="stack-dot"></span>Project Reactor</div>
+        <div class="stack-item"><span class="stack-dot"></span>Maven / Gradle</div>
+      </div>
+    </div>
+    <div class="stack-group">
+      <h4>Infrastructure</h4>
+      <div class="stack-items">
+        <div class="stack-item"><span class="stack-dot"></span>Kubernetes / Docker</div>
+        <div class="stack-item"><span class="stack-dot"></span>Apache Kafka</div>
+        <div class="stack-item"><span class="stack-dot"></span>AWS / GCP</div>
+        <div class="stack-item"><span class="stack-dot"></span>Terraform</div>
+        <div class="stack-item"><span class="stack-dot"></span>Redis</div>
+        <div class="stack-item"><span class="stack-dot"></span>PostgreSQL / Oracle</div>
+      </div>
+    </div>
+    <div class="stack-group">
+      <h4>Architecture</h4>
+      <div class="stack-items">
+        <div class="stack-item"><span class="stack-dot"></span>Microservices / SOA</div>
+        <div class="stack-item"><span class="stack-dot"></span>Domain-Driven Design</div>
+        <div class="stack-item"><span class="stack-dot"></span>CQRS / Event Sourcing</div>
+        <div class="stack-item"><span class="stack-dot"></span>REST / gRPC / GraphQL</div>
+        <div class="stack-item"><span class="stack-dot"></span>C4 / UML Modelling</div>
+        <div class="stack-item"><span class="stack-dot"></span>TOGAF / Zachman</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">Social proof</div>
+  <h2 class="section-title">What clients say</h2>
+  <div class="testimonial-block">
+    <p class="testimonial-text">"Alex redesigned our entire data pipeline architecture in a 6-week engagement. The clarity of thinking, the quality of documentation, and the handoff to our internal team was exceptional. We've already seen a 40% reduction in incident volume."</p>
+    <div class="testimonial-author">
+      <div class="author-avatar">SW</div>
+      <div>
+        <div class="author-name">Sarah W.</div>
+        <div class="author-title">CTO, Series B Fintech — London</div>
+      </div>
+    </div>
+  </div>
+  <div class="testimonial-block" style="margin-top:1rem;">
+    <p class="testimonial-text">"Brought Alex in for a technical due diligence on an acquisition target. His Java and architecture knowledge is deep, and his written report gave the board real confidence in our decision."</p>
+    <div class="testimonial-author">
+      <div class="author-avatar">RJ</div>
+      <div>
+        <div class="author-name">Robert J.</div>
+        <div class="author-title">Managing Partner, Tech PE Fund</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="contact" class="cta-section">
+  <div class="section-label" style="text-align:center;">Ready to work together?</div>
+  <h2>Let's build something <em style="font-style:italic; color:var(--java-accent);">serious.</em></h2>
+  <p>Available for architecture consulting, fractional CTO engagements, and senior Java contracts. Response within 24 hours.</p>
+  <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+    <a href="mailto:alex@alexmorgan.dev" class="btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      alex@alexmorgan.dev
+    </a>
+    <a href="https://linkedin.com" class="btn-secondary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 <span>Alex Morgan</span> · Java Architect &amp; Solution Design Consultant · London, UK</p>
+</footer>
+
+</body>
+</html>

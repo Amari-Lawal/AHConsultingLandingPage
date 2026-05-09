@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>AH Consulting — Senior Java Architect</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #F7F6F3;
+      --surface: #FFFFFF;
+      --ink: #0D0D0D;
+      --ink2: #3A3A3A;
+      --ink3: #6B6B6B;
+      --ink4: #9A9A9A;
+      --rule: #DDDBD6;
+      --rule2: #C8C5BF;
+      --accent: #1A3A5C;
+      --accent2: #2B5F9E;
+      --warn: #8B1A1A;
+      --green: #1A4D2E;
+      --green-bg: #EEF5F0;
+      --accent-bg: #EEF2F7;
+      --warn-bg: #F7EEEE;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--ink3);
+      text-decoration: none;
+      padding: 0 1.25rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      border-right: 1px solid var(--rule);
+      transition: color 0.15s, background 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links a:first-child {
+      border-left: 1px solid var(--rule);
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      background: #F2F1EE;
+    }
+
+    .nav-hire {
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 20px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s;
+    }
+
+    .nav-hire:hover {
+      background: var(--accent2);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--surface);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 5rem 3rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--green);
+      background: var(--green-bg);
+      border: 1px solid #BDD8C5;
+      padding: 5px 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .hero h1 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 2.75rem;
+      font-weight: 300;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 strong {
+      font-weight: 500;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--ink3);
+      line-height: 1.75;
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-prim {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      background: var(--accent);
+      color: #fff;
+      padding: 11px 24px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: background 0.15s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-prim:hover {
+      background: var(--accent2);
+    }
+
+    .btn-sec {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      background: transparent;
+      color: var(--ink2);
+      padding: 10px 24px;
+      text-decoration: none;
+      border: 1px solid var(--rule2);
+      letter-spacing: 0.02em;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .btn-sec:hover {
+      border-color: var(--ink3);
+      color: var(--ink);
+    }
+
+    /* hero right panel */
+    .hero-panel {
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      padding: 1.5rem;
+    }
+
+    .panel-heading {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--ink4);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .panel-stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .panel-stat:last-child {
+      border-bottom: none;
+    }
+
+    .panel-stat-label {
+      font-size: 12px;
+      color: var(--ink3);
+    }
+
+    .panel-stat-val {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .panel-stat-val.green {
+      color: var(--green);
+    }
+
+    /* ── RULE BAR ── */
+    .rule-bar {
+      background: var(--accent);
+      height: 3px;
+    }
+
+    /* ── METRICS ── */
+    .metrics-row {
+      background: var(--surface);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .metrics-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .metric {
+      padding: 2rem 3rem;
+      border-right: 1px solid var(--rule);
+    }
+
+    .metric:last-child {
+      border-right: none;
+    }
+
+    .metric-num {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .metric-num sup {
+      font-size: 1.1rem;
+      vertical-align: super;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--ink4);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .metric-sub {
+      font-size: 11px;
+      color: var(--ink4);
+      margin-top: 2px;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 4rem 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink4);
+      letter-spacing: 0.08em;
+    }
+
+    .section-title {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    /* ── PRINCIPLES (replaces expertise) ── */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .principle {
+      background: var(--surface);
+      padding: 2rem;
+    }
+
+    .principle-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .principle-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-bg);
+      border: 1px solid #C5D5E8;
+      padding: 3px 8px;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .principle h3 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .principle p {
+      font-size: 13px;
+      color: var(--ink3);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      padding: 3px 7px;
+      background: var(--bg);
+      border: 1px solid var(--rule2);
+      color: var(--ink3);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── PROJECTS ── */
+    .project {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      margin-bottom: 1px;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+    }
+
+    .project-body {
+      padding: 2rem;
+    }
+
+    .project-sidebar {
+      border-left: 1px solid var(--rule);
+      padding: 2rem;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .project-type {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+
+    .type-arch {
+      background: var(--accent-bg);
+      color: var(--accent);
+      border: 1px solid #C5D5E8;
+    }
+
+    .type-java {
+      background: #F5EEF7;
+      color: #5B2D6E;
+      border: 1px solid #D8C5E0;
+    }
+
+    .type-sol {
+      background: var(--green-bg);
+      color: var(--green);
+      border: 1px solid #BDD8C5;
+    }
+
+    .project h3 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+
+    .project p {
+      font-size: 13px;
+      color: var(--ink3);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 1rem;
+    }
+
+    .sidebar-kpi {}
+
+    .kpi-val {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .kpi-label {
+      font-size: 11px;
+      color: var(--ink4);
+      margin-top: 3px;
+      font-weight: 400;
+    }
+
+    .kpi-rule {
+      height: 1px;
+      background: var(--rule);
+      margin: 0.25rem 0;
+    }
+
+    /* ── STACK TABLE ── */
+    .stack-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .stack-table th {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--ink4);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      text-align: left;
+    }
+
+    .stack-table td {
+      font-size: 13px;
+      padding: 0.65rem 1rem;
+      border: 1px solid var(--rule);
+      color: var(--ink2);
+      vertical-align: top;
+      background: var(--surface);
+    }
+
+    .stack-table tr:hover td {
+      background: #FAFAF8;
+    }
+
+    .stack-cat {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .proficiency {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .pip {
+      width: 8px;
+      height: 8px;
+      background: var(--rule2);
+      border-radius: 1px;
+    }
+
+    .pip.on {
+      background: var(--accent);
+    }
+
+    .pip.full {
+      background: var(--green);
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonial {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--accent);
+      padding: 2rem 2.5rem;
+      margin-bottom: 1px;
+    }
+
+    .testimonial-text {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink2);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .t-avatar {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-bg);
+      border: 1px solid #C5D5E8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .t-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .t-role {
+      font-size: 12px;
+      color: var(--ink4);
+    }
+
+    /* ── TRUST SIGNALS ── */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .trust-card {
+      background: var(--surface);
+      padding: 1.75rem;
+    }
+
+    .trust-icon {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--green);
+      background: var(--green-bg);
+      border: 1px solid #BDD8C5;
+      display: inline-block;
+      padding: 4px 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    .trust-card h4 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .trust-card p {
+      font-size: 12px;
+      color: var(--ink3);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--accent);
+    }
+
+    .cta-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 4rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .cta-inner h2 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-inner p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 300;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+
+    .btn-white {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      background: #fff;
+      color: var(--accent);
+      padding: 12px 28px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .btn-white:hover {
+      background: #EEF2F7;
+    }
+
+    .btn-ghost {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.75);
+      padding: 10px 28px;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.7);
+      color: #fff;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.04em;
+    }
+
+    footer span {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    @media(max-width:700px) {
+      nav {
+        padding: 0 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 3rem 1.25rem;
+      }
+
+      .hero-panel {
+        display: none;
+      }
+
+      .metrics-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .metric {
+        padding: 1.5rem;
+      }
+
+      .section {
+        padding: 3rem 1.25rem;
+      }
+
+      .principles-grid,
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project {
+        grid-template-columns: 1fr;
+      }
+
+      .project-sidebar {
+        border-left: none;
+        border-top: 1px solid var(--rule);
+      }
+
+      .stack-table {
+        font-size: 12px;
+      }
+
+      .cta-inner {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .cta-actions {
+        align-items: flex-start;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-brand">
+      <span class="nav-brand-dot"></span>
+      AH Consulting
+    </div>
+    <div class="nav-links">
+      <a href="#principles">Principles</a>
+      <a href="#projects">Work</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-hire">Available for hire</a>
+  </nav>
+
+  <div class="rule-bar"></div>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Open to contracts — Q3 2025
+        </div>
+        <h1>Senior Java Architect.<br><strong>I build systems that last.</strong></h1>
+        <p class="hero-sub">Not the fastest framework. Not the newest tool. I design and build Java backend systems
+          engineered for correctness, observability, and long-term maintainability — the kind enterprises trust with
+          critical workloads.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-prim">View selected work</a>
+          <a href="#contact" class="btn-sec">Discuss a project</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="panel-heading">Current status</div>
+        <div class="panel-stat">
+          <span class="panel-stat-label">Availability</span>
+          <span class="panel-stat-val green">● Available</span>
+        </div>
+        <div class="panel-stat">
+          <span class="panel-stat-label">Location</span>
+          <span class="panel-stat-val">London, UK</span>
+        </div>
+        <div class="panel-stat">
+          <span class="panel-stat-label">Contract type</span>
+          <span class="panel-stat-val">Freelance / B2B</span>
+        </div>
+        <div class="panel-stat">
+          <span class="panel-stat-label">Notice period</span>
+          <span class="panel-stat-val">2 weeks</span>
+        </div>
+        <div class="panel-stat">
+          <span class="panel-stat-label">Remote</span>
+          <span class="panel-stat-val">Yes</span>
+        </div>
+        <div class="panel-stat">
+          <span class="panel-stat-label">Primary stack</span>
+          <span class="panel-stat-val">Java · Spring · AWS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="metrics-row">
+    <div class="metrics-inner">
+      <div class="metric">
+        <div class="metric-num">10<sup>+</sup></div>
+        <div class="metric-label">Years Java</div>
+        <div class="metric-sub">Production systems since 2014</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">40<sup>+</sup></div>
+        <div class="metric-label">Systems Designed</div>
+        <div class="metric-sub">From greenfield to legacy rescue</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">0</div>
+        <div class="metric-label">Critical Incidents</div>
+        <div class="metric-sub">In last 3 years of delivery</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">99.9<sup>%</sup></div>
+        <div class="metric-label">Uptime SLA</div>
+        <div class="metric-sub">Across all production systems</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="principles">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Engineering philosophy</h2>
+    </div>
+    <div class="principles-grid">
+      <div class="principle">
+        <div class="principle-header">
+          <span class="principle-num">P.01</span>
+          <h3>Correctness before performance</h3>
+        </div>
+        <p>A fast system that produces wrong results is worse than a slow correct one. I design for correctness first —
+          strong typing, explicit error handling, transactional integrity, and exhaustive edge case coverage.</p>
+        <div class="tags">
+          <span class="tag">ACID transactions</span>
+          <span class="tag">Type safety</span>
+          <span class="tag">Contract testing</span>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-header">
+          <span class="principle-num">P.02</span>
+          <h3>Systems you can operate</h3>
+        </div>
+        <p>Production readiness is not an afterthought. Every system I deliver includes structured logging, distributed
+          tracing, health checks, runbooks, and dashboards. Your on-call engineers will thank me.</p>
+        <div class="tags">
+          <span class="tag">Observability</span>
+          <span class="tag">OpenTelemetry</span>
+          <span class="tag">Runbooks</span>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-header">
+          <span class="principle-num">P.03</span>
+          <h3>Architecture for longevity</h3>
+        </div>
+        <p>I favour explicit, boring solutions over clever abstractions. Clean layered architecture, documented ADRs,
+          and dependency management that lets your team own the codebase 5 years from now without needing me.</p>
+        <div class="tags">
+          <span class="tag">DDD</span>
+          <span class="tag">Hexagonal arch.</span>
+          <span class="tag">ADRs</span>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-header">
+          <span class="principle-num">P.04</span>
+          <h3>Security &amp; compliance by default</h3>
+        </div>
+        <p>Security is structural, not a layer on top. I design systems with least privilege, secrets management, audit
+          trails, and data classification built into the architecture — not retrofitted before a pen test.</p>
+        <div class="tags">
+          <span class="tag">OWASP</span>
+          <span class="tag">GDPR-aware</span>
+          <span class="tag">Vault / KMS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Selected engagements</h2>
+    </div>
+
+    <div class="project">
+      <div class="project-body">
+        <span class="project-type type-arch">Architecture</span>
+        <h3>Core Banking Platform — Microservices Modernisation</h3>
+        <p>Led architecture design for a Tier-1 bank's migration from a 15-year-old monolith to a distributed Java
+          microservices platform. Defined service boundaries using Domain-Driven Design, designed the event sourcing
+          infrastructure on Kafka, and established engineering standards adopted across 6 teams. Delivered zero-downtime
+          cutover with parallel-run validation.</p>
+        <div class="project-tags">
+          <span class="tag">Java 21</span><span class="tag">Spring Boot 3</span><span class="tag">Kafka</span><span
+            class="tag">Event Sourcing</span><span class="tag">Kubernetes</span><span class="tag">AWS</span><span
+            class="tag">DDD</span>
+        </div>
+      </div>
+      <div class="project-sidebar">
+        <div class="sidebar-kpi">
+          <div class="kpi-val">0</div>
+          <div class="kpi-label">Downtime during cutover</div>
+        </div>
+        <div class="kpi-rule"></div>
+        <div class="sidebar-kpi">
+          <div class="kpi-val">50k</div>
+          <div class="kpi-label">Transactions / second</div>
+        </div>
+        <div class="kpi-rule"></div>
+        <div class="sidebar-kpi">
+          <div class="kpi-val">6</div>
+          <div class="kpi-label">Teams aligned</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" style="margin-top:1px;">
+      <div class="project-body">
+        <span class="project-type type-java">Java Engineering</span>
+        <h3>NHS Healthcare Integration Engine — HL7 / FHIR Platform</h3>
+        <p>Designed and built a FHIR R4-compliant clinical data integration engine in Java 17, processing HL7 messages
+          across NHS trust boundaries. Implemented a full audit trail with immutable event log, AES-256 encryption at
+          rest, and role-based access control meeting NHS DSPT requirements. System has processed 200M+ events with no
+          data integrity incidents.</p>
+        <div class="project-tags">
+          <span class="tag">Java 17</span><span class="tag">HAPI FHIR</span><span class="tag">Spring
+            Integration</span><span class="tag">Oracle DB</span><span class="tag">RBAC</span><span class="tag">NHS
+            DSPT</span>
+        </div>
+      </div>
+      <div class="project-sidebar">
+        <div class="sidebar-kpi">
+          <div class="kpi-val">200M+</div>
+          <div class="kpi-label">Events processed</div>
+        </div>
+        <div class="kpi-rule"></div>
+        <div class="sidebar-kpi">
+          <div class="kpi-val">0</div>
+          <div class="kpi-label">Data integrity incidents</div>
+        </div>
+        <div class="kpi-rule"></div>
+        <div class="sidebar-kpi">
+          <div class="kpi-val">DSPT</div>
+          <div class="kpi-label">Compliance achieved</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" style="margin-top:1px;">
+      <div class="project-body">
+        <span class="project-type type-sol">Solution Architecture</span>
+        <h3>Retail Platform — Cloud Migration &amp; Architecture Review</h3>
+        <p>Engaged as solution architect for a £50M revenue retailer's cloud migration. Delivered a full architecture
+          assessment report, identified 14 critical risk areas, and produced a phased migration roadmap. Reduced
+          infrastructure costs by 38%, improved deployment frequency from monthly to daily, and established CI/CD
+          pipeline standards that remain in use 3 years later.</p>
+        <div class="project-tags">
+          <span class="tag">GCP</span><span class="tag">Terraform</span><span class="tag">Spring Cloud</span><span
+            class="tag">Docker</span><span class="tag">Jenkins</span><span class="tag">Architecture Review</span>
+        </div>
+      </div>
+      <div class="project-sidebar">
+        <div class="sidebar-kpi">
+          <div class="kpi-val">38%</div>
+          <div class="kpi-label">Infrastructure cost reduction</div>
+        </div>
+        <div class="kpi-rule"></div>
+        <div class="sidebar-kpi">
+          <div class="kpi-val">14</div>
+          <div class="kpi-label">Risk areas identified</div>
+        </div>
+        <div class="kpi-rule"></div>
+        <div class="sidebar-kpi">
+          <div class="kpi-val">Daily</div>
+          <div class="kpi-label">Deploy frequency (was monthly)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stack">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Technical stack</h2>
+    </div>
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th style="width:160px;">Category</th>
+          <th>Technologies</th>
+          <th style="width:180px;">Proficiency</th>
+          <th style="width:200px;">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="stack-cat">Core Java</td>
+          <td>Java 21, 17, 11 · Spring Boot 3 · Spring Security · Project Reactor · Hibernate / JPA</td>
+          <td><span class="proficiency"><span class="pip full"></span><span class="pip full"></span><span
+                class="pip full"></span><span class="pip full"></span><span class="pip full"></span></span> Expert</td>
+          <td style="font-size:11px;color:#9A9A9A;">Primary stack since 2014</td>
+        </tr>
+        <tr>
+          <td class="stack-cat">Messaging</td>
+          <td>Apache Kafka · RabbitMQ · Spring Integration · AWS SQS / SNS</td>
+          <td><span class="proficiency"><span class="pip full"></span><span class="pip full"></span><span
+                class="pip full"></span><span class="pip full"></span><span class="pip on"></span></span> Advanced</td>
+          <td style="font-size:11px;color:#9A9A9A;">Event-driven architecture focus</td>
+        </tr>
+        <tr>
+          <td class="stack-cat">Data</td>
+          <td>PostgreSQL · Oracle · Redis · Elasticsearch · Liquibase</td>
+          <td><span class="proficiency"><span class="pip full"></span><span class="pip full"></span><span
+                class="pip full"></span><span class="pip full"></span><span class="pip on"></span></span> Advanced</td>
+          <td style="font-size:11px;color:#9A9A9A;">Schema design &amp; migration strategy</td>
+        </tr>
+        <tr>
+          <td class="stack-cat">Infrastructure</td>
+          <td>Kubernetes · Docker · Terraform · AWS (EKS, RDS, Lambda) · GCP</td>
+          <td><span class="proficiency"><span class="pip full"></span><span class="pip full"></span><span
+                class="pip full"></span><span class="pip on"></span><span class="pip on"></span></span> Proficient</td>
+          <td style="font-size:11px;color:#9A9A9A;">IaC &amp; platform architecture</td>
+        </tr>
+        <tr>
+          <td class="stack-cat">Architecture</td>
+          <td>DDD · CQRS · Event Sourcing · Hexagonal · C4 Modelling · TOGAF</td>
+          <td><span class="proficiency"><span class="pip full"></span><span class="pip full"></span><span
+                class="pip full"></span><span class="pip full"></span><span class="pip full"></span></span> Expert</td>
+          <td style="font-size:11px;color:#9A9A9A;">Patterns applied in production</td>
+        </tr>
+        <tr>
+          <td class="stack-cat">Quality</td>
+          <td>JUnit 5 · Testcontainers · ArchUnit · JaCoCo · SonarQube · OWASP</td>
+          <td><span class="proficiency"><span class="pip full"></span><span class="pip full"></span><span
+                class="pip full"></span><span class="pip full"></span><span class="pip on"></span></span> Advanced</td>
+          <td style="font-size:11px;color:#9A9A9A;">80%+ coverage enforced</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Why clients trust me with critical systems</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <span class="trust-icon">Verified</span>
+        <h4>Full documentation handoff</h4>
+        <p>Every engagement ends with architecture decision records, runbooks, threat models, and onboarding guides.
+          Your team owns the system without depending on me.</p>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">Verified</span>
+        <h4>No cowboy deployments</h4>
+        <p>Trunk-based development, PR reviews, automated quality gates, staged rollouts, and rollback plans. Everything
+          goes through a process designed to catch mistakes before production.</p>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">Verified</span>
+        <h4>Compliance-aware by default</h4>
+        <p>GDPR, PCI-DSS, ISO 27001, NHS DSPT — I understand the regulatory landscape and design systems that satisfy
+          audit requirements without bolting on controls at the end.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Client feedback</h2>
+    </div>
+    <div class="testimonial">
+      <p class="testimonial-text">"Amari is the engineer you bring in when you cannot afford to get it wrong. He
+        redesigned our payment processing architecture and the thing that impressed us most was not the technical
+        quality — it was the documentation, the runbooks, and the way he set our team up to own the system themselves."
+      </p>
+      <div class="testimonial-author">
+        <div class="t-avatar">SW</div>
+        <div>
+          <div class="t-name">Sarah W.</div>
+          <div class="t-role">CTO · Series B Fintech, London</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial" style="margin-top:1px;">
+      <p class="testimonial-text">"We engaged Amari for a technical due diligence on an acquisition. His assessment was
+        thorough, balanced, and written for both technical and non-technical readers. He identified three structural
+        risks we had completely missed. The board relied heavily on his report."</p>
+      <div class="testimonial-author">
+        <div class="t-avatar">RJ</div>
+        <div>
+          <div class="t-name">Robert J.</div>
+          <div class="t-role">Managing Partner · Technology PE Fund</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="contact">
+    <div class="cta-section">
+      <div class="cta-inner">
+        <div>
+          <h2>Ready to build something you can rely on?</h2>
+          <p>Available for architecture consulting, solution design, senior Java contracts, and fractional CTO
+            engagements. Response within 24 hours.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="mailto:amari.lawal05@gmail.com" class="btn-white">amari.lawal05@gmail.com</a>
+          <a href="https://linkedin.com" class="btn-ghost">View LinkedIn profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 <span>AH Consulting</span> · Senior Java Architect &amp; Solution Design Consultant · London, UK</p>
+    <p>Available for freelance engagements · <span>amari.lawal05@gmail.com</span></p>
+  </footer>
+
+</body>
+
+</html>
